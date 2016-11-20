@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+
+    <script src="~/scripts/libs/angularjs/angular.js"></script>
+    <script src="~/scripts/libs/jquery/jquery-3.1.1.js"></script>
+    <script src="~/scripts/libs/bootstrap/bootstrap.js"></script>
+
+    @RenderSection("Styles", false);
+    @RenderSection("HeadScripts", false);
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

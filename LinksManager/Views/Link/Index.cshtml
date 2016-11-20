@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadScripts
+{
+    <script src="~/scripts/app/pages/links/links.module.js"></script>
+    <script src="~/scripts/app/pages/links/links.controller.js"></script>
+}
+
+<h2>Index</h2>
+
+<section class="content" ng-app="linkModule">
+    <section ng-controller="linkController as vm">
+        <input type="text" ng-model="vm.hello" />
+        {{vm.hello}}
+    </section>
+</section>
+
