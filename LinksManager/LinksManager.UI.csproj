@@ -48,6 +48,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -94,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LinkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -111,8 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Link\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LinkManager.Entities\LinksManager.Entities.csproj">
+      <Project>{71fc9646-b8f9-49a4-be64-9b4dc35e0c4b}</Project>
+      <Name>LinksManager.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinksManager.Repositories\LinksManager.Repositories.csproj">
+      <Project>{d046505d-7f6f-4625-bd97-29dd7e0e7654}</Project>
+      <Name>LinksManager.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
