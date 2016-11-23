@@ -17,9 +17,9 @@ namespace LinksManager.Repositories.Repositories
         {
             links = new List<LinkEntity>()
             {
-                new LinkEntity {Id = 1, Title = "www.google.com", CreationDate = DateTime.UtcNow },
-                new LinkEntity {Id = 2, Title = "github.com", CreationDate = DateTime.UtcNow },
-                new LinkEntity {Id = 3, Title = "www.coursera.org", CreationDate = DateTime.UtcNow }
+                new LinkEntity {Id = 1, Title = "www.google.com", CreationDate = DateTime.Now },
+                new LinkEntity {Id = 2, Title = "github.com", CreationDate = DateTime.Now },
+                new LinkEntity {Id = 3, Title = "www.coursera.org", CreationDate = DateTime.Now }
             };
 
             lastGeneratedId = 3;

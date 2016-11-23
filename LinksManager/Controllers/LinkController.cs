@@ -7,6 +7,7 @@ using LinksManager.Repositories;
 using LinksManager.Repositories.Repositories;
 using LinksManager.Entities;
 using LinksManager.Models;
+using Newtonsoft.Json;
 
 namespace LinksManager.Controllers
 {
@@ -33,7 +34,10 @@ namespace LinksManager.Controllers
             //read why do we actually use jsonrequstbehavior!
             //http://stackoverflow.com/questions/26390806/when-to-use-jsonresult-over-actionresult
             //its cos of json and action result difference
-            return Json(links, JsonRequestBehavior.AllowGet);
+
+            var serializedLinks = JsonConvert.SerializeObject(links);
+            // return Json(links, JsonRequestBehavior.AllowGet);
+            return Json(serializedLinks, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -47,11 +51,12 @@ namespace LinksManager.Controllers
         [HttpPost]
         public ActionResult AddLink(LinkModel link)
         {
-            link.CreationDate = DateTime.UtcNow;
+            link.CreationDate = DateTime.Now;
             LinkEntity linkEntity = (LinkEntity)link;
             LinkEntity addedLinkEntity = _linkRepository.Add(linkEntity);
 
-            return Json(addedLinkEntity, JsonRequestBehavior.AllowGet);
+            var serializedAddedLinkEntity = JsonConvert.SerializeObject(addedLinkEntity);
+            return Json(serializedAddedLinkEntity, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
