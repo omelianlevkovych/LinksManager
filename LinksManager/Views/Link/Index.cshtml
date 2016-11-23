@@ -4,18 +4,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles
+{
+    <link href="~/styles/bootstrap.css" rel="stylesheet" />
+    <link href="~/styles/site.css" rel="stylesheet" />
+}
 @section HeadScripts
 {
     <script src="~/scripts/app/pages/links/links.module.js"></script>
+    <script src="~/scripts/app/pages/links/links.services.js"></script>
     <script src="~/scripts/app/pages/links/links.controller.js"></script>
 }
 
-<h2>Index</h2>
-
 <section class="content" ng-app="linkModule">
     <section ng-controller="linkController as vm">
-        <input type="text" ng-model="vm.hello" />
-        {{vm.hello}}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for links..." ng-model="search.Title">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon">http(s)://</span>
+                    <input type="text" class="form-control" placeholder="Link title" ng-model="vm.newLinkTitle">
+                    <span class="input-group-btn">
+                        <button type="button" ng-click="vm.onAddNewLink()" class="btn btn-success btn-secondary">
+                            <span class="glyphicon glyphicon-plus-sign"></span>Add link
+                        </button>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><label>Link title</label></th>
+                    <th><label>Creation Date</label></th>
+                    <th><label>Edit</label></th>
+                    <th><label>Remove</label></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="link in vm.links | filter: search">
+                    <td>
+                        <a href ="{{link.Title}}">{{link.Title}}</a>
+                    </td>
+                    <td>{{link.CreationDate}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </section>
 

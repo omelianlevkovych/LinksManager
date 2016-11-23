@@ -1,4 +1,4 @@
 ﻿(function (angular) {
     angular
-        .module("linkModule", []);
+        .module('linkModule', []);
 })(angular);

@@ -37,20 +37,21 @@ namespace LinksManager.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetLink(int id)
+        public JsonResult GetLink(LinkModel linkModel)
         {
-            var link = _linkRepository.Get(id);
+            var link = _linkRepository.Get(linkModel.Id);
 
             return Json(link, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult AddLink(LinkModel linkModel)
+        public ActionResult AddLink(LinkModel link)
         {
-            LinkEntity linkEntity = (LinkEntity)linkModel;
+            link.CreationDate = DateTime.UtcNow;
+            LinkEntity linkEntity = (LinkEntity)link;
             LinkEntity addedLinkEntity = _linkRepository.Add(linkEntity);
 
-            return Json(addedLinkEntity);
+            return Json(addedLinkEntity, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
