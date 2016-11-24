@@ -49,7 +49,7 @@ namespace LinksManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddLink(LinkModel link)
+        public JsonResult AddLink(LinkModel link)
         {
             link.CreationDate = DateTime.Now;
             LinkEntity linkEntity = (LinkEntity)link;

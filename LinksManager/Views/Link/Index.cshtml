@@ -50,11 +50,11 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="link in vm.links | filter: search">
+                <tr ng-repeat="link in vm.links | filter: search | orderBy: '-CreationDate'">
                     <td>
                         <a href ="{{link.Title}}">{{link.Title}}</a>
                     </td>
-                    <td>{{link.CreationDate}}</td>
+                    <td>{{link.CreationDate  | date}}</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
